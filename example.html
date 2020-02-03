@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+</head>
+<body>
+	<style>
+
+	* {
+		padding: 0;
+		margin: 0;
+	}
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		#progress-bar {
+			position: relative;
+			border-radius: 10px;
+			background-color: #ddd;
+			width: 350px;
+			height: 20px;
+		}
+
+		#progress {
+			width: 0%;
+			height: 100%;
+			background-color: dodgerblue;
+			border-radius: 10px;
+			position: absolute;
+		}
+
+		#percentage {
+			position: relative;
+			top: 0;
+			left: 50%;
+			color: #bbb;
+		}
+
+
+	</style>
+
+	<div id="progress-bar">
+		<div id="progress"></div>
+		<div id="percentage"><p>0%</p></div>
+	</div>
+
+<script src="tween.js"></script>
+<script>
+	
+var tween = new Tween(0, 100);
+tween.onComplete = function() {
+	alert("progress completed");
+}
+
+progress = document.getElementById("progress");
+percentage = document.getElementById("percentage");
+
+tween.animate(function(value) {
+	progress.style.width = value + "%";
+	percentage.innerHTML = Math.round(value) + "%";
+}, 5000)
+
+</script>
+</body>
+</html>
